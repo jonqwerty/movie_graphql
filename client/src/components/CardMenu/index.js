@@ -1,11 +1,10 @@
-import React, { useState } from "react"
-import IconButton from "@mui/material/IconButton"
-import MoreVertIcon from "@mui/icons-material/MoreVert"
+import React from "react"
 import Menu from "@mui/material/Menu"
-import MenuItem from "@mui/material/MenuItem"
+import MoreVertIcon from "@mui/icons-material/MoreVert"
+import IconButton from "@mui/material/IconButton"
 
-const CardMenu = ({ onCardSelect }) => {
-  const [anchorEl, setAnchorEl] = useState(null)
+const CardMenu = ({ onCardSelect, children }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -13,10 +12,11 @@ const CardMenu = ({ onCardSelect }) => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
   return (
     <>
       <IconButton
-        sx={{ position: "absolute", right: 5, top: 5, background: "rgba(255, 255, 255, .3" }}
+        sx={{ position: "absolute", right: 5, top: 5, background: "rgba(255, 255, 255, .3)" }}
         aria-label="more"
         id="long-button"
         aria-controls={open ? "long-menu" : undefined}
@@ -26,6 +26,7 @@ const CardMenu = ({ onCardSelect }) => {
       >
         <MoreVertIcon />
       </IconButton>
+
       <Menu
         id="long-menu"
         MenuListProps={{
@@ -40,7 +41,7 @@ const CardMenu = ({ onCardSelect }) => {
           },
         }}
       >
-        <MenuItem onClick={onCardSelect}>Select</MenuItem>
+        {children}
       </Menu>
     </>
   )

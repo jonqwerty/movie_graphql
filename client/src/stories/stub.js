@@ -4,6 +4,17 @@ export const movies = [
     image: "https://www.carlsberggroup.com/media/1299/tou.png",
     title: "Maroptic",
     releaseDate: "2015-12-13T03:56:08 -02:00",
+    genres: [
+      {
+        id: 1,
+        name: "comedy",
+      },
+      {
+        id: 2,
+        name: "melodrama",
+      },
+    ],
+    runtime: 122,
   },
   {
     _id: "659dba88a80bd673ffbdd9dd",

@@ -4,9 +4,11 @@ import Card from "@mui/material/Card"
 import CardMedia from "@mui/material/CardMedia"
 import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
-
+import MenuItem from "@mui/material/MenuItem"
 import { styled } from "@mui/material/styles"
-import { CardMenu } from "./components"
+
+import CardMenu from "../CardMenu"
+import { movies } from "../../stories/stub"
 
 const CardInfo = styled(CardContent)(({ theme }) => ({
   "&:last-child": {
@@ -14,11 +16,12 @@ const CardInfo = styled(CardContent)(({ theme }) => ({
   },
 }))
 
-const MovieCard = ({ movie, onCardSelect }) => {
+const MovieCard = ({ movie = movies[0], onCardSelect }) => {
   return (
     <Card sx={{ maxWidth: 250, position: "relative" }}>
-      <CardMenu onCardSelect={onCardSelect} />
-
+      <CardMenu>
+        <MenuItem onClick={onCardSelect}>Select</MenuItem>
+      </CardMenu>
       <CardMedia component="img" height="250" image={movie.image} alt={movie.title} />
 
       <CardInfo>
