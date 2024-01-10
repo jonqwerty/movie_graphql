@@ -17,7 +17,7 @@ const MovieCardSelected = ({ movie = movies[0], onCardDelete }) => {
   return (
     <Card sx={{ display: "flex" }}>
       <CardMedia component="img" sx={{ width: 100 }} image={movie.image} alt={movie.title} />
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", width: "100%", position: "relative" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h5">
             {movie.title}
