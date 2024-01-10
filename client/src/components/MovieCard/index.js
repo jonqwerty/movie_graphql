@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import Card from "@mui/material/Card"
 import CardMedia from "@mui/material/CardMedia"
 import CardContent from "@mui/material/CardContent"
@@ -13,29 +14,32 @@ const CardInfo = styled(CardContent)(({ theme }) => ({
   },
 }))
 
-const MovieCard = () => {
-  const onAddClick = (movie) => alert("movie is added")
+const MovieCard = ({ movie, onCardSelect }) => {
   return (
     <Card sx={{ maxWidth: 250, position: "relative" }}>
-      <CardMenu onAddClick={onAddClick} />
+      <CardMenu onCardSelect={onCardSelect} />
 
-      <CardMedia
-        component="img"
-        height="250"
-        image="https://www.carlsberggroup.com/media/1299/tou.png"
-        alt="Paella dish"
-      />
+      <CardMedia component="img" height="250" image={movie.image} alt={movie.title} />
 
       <CardInfo>
         <Typography variant="h5" gutterBottom component="div">
-          fhfkjdkdfhkdf d
+          {movie.title}
         </Typography>
         <Typography variant="subtitle1" gutterBottom component="div">
-          20.20. 20222
+          {movie.releaseDate}
         </Typography>
       </CardInfo>
     </Card>
   )
+}
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string,
+  }).isRequired,
+  onCardSelect: PropTypes.func,
 }
 
 export default MovieCard
