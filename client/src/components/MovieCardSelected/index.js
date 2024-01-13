@@ -1,21 +1,15 @@
-import * as React from "react"
-import { useTheme } from "@mui/material/styles"
+import PropTypes from "prop-types"
 import Box from "@mui/material/Box"
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
-import PropTypes from "prop-types"
 import MenuItem from "@mui/material/MenuItem"
-
 import CardMenu from "../CardMenu"
 
-import { movies } from "../../stories/stub"
-
-const MovieCardSelected = ({ movie = movies[0], onCardDelete }) => {
-  const theme = useTheme()
+const MovieCardSelected = ({ movie, onCardDelete }) => {
   return (
-    <Card sx={{ display: "flex" }}>
+    <Card sx={{ display: "flex", minHeight: "164px" }}>
       <CardMedia component="img" sx={{ width: 100 }} image={movie.image} alt={movie.title} />
       <Box sx={{ display: "flex", flexDirection: "column", width: "100%", position: "relative" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
@@ -37,7 +31,7 @@ const MovieCardSelected = ({ movie = movies[0], onCardDelete }) => {
           </Typography>
         </Box>
         <CardMenu>
-          <MenuItem onClick={onCardDelete}>Delete</MenuItem>
+          <MenuItem onClick={() => onCardDelete(movie)}>Delete</MenuItem>
         </CardMenu>
       </Box>
     </Card>
