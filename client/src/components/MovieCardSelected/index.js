@@ -5,6 +5,8 @@ import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import MenuItem from "@mui/material/MenuItem"
+import { FormattedMessage } from "react-intl"
+
 import CardMenu from "../CardMenu"
 
 const MovieCardSelected = ({ movie, onCardDelete }) => {
@@ -31,7 +33,10 @@ const MovieCardSelected = ({ movie, onCardDelete }) => {
           </Typography>
         </Box>
         <CardMenu>
-          <MenuItem onClick={() => onCardDelete(movie)}>Delete</MenuItem>
+          <MenuItem onClick={() => onCardDelete(movie)}>
+            {" "}
+            <FormattedMessage id="delete" />
+          </MenuItem>
         </CardMenu>
       </Box>
     </Card>
